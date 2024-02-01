@@ -4,65 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question Form</title>
+    <title>AskGeminium</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1>Question Form</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">AskGeminium</h1>
                 <form id="questionForm">
                     <div class="form-group">
                         <textarea class="form-control" id="questionInput" rows="5" maxlength="1000"
-                            placeholder="Enter your question"></textarea>
+                            placeholder=""></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ask</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="askButton">Ask</button>
                 </form>
-                <div id="response"></div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div id="responseBox"></div>
             </div>
         </div>
     </div>
 
+    <footer>&copy; <span id="currentYear"></span> JoshAtticus Ideas</footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#questionForm").submit(function (event) {
-                event.preventDefault();
-
-                var question = $("#questionInput").val();
-
-                var requestData = {
-                    "question": question
-                };
-
-                $.ajax({
-                    type: "POST",
-                    url: "https://geminium.joshatticus.online/api/geminium/ask",
-                    contentType: "application/json",
-                    data: JSON.stringify(requestData),
-                    success: function (response) {
-                        $("#response").text(response);
-                    },
-                    error: function () {
-                        $("#response").text("An error occurred while processing your request.");
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
