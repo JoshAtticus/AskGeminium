@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AskGeminium</title>
+    <title>AskGeminium - Math</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism.min.css" />
     <link rel="stylesheet" href="style.css" />
@@ -106,7 +106,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h1>AskGeminium</h1>
+                <h1>AskGeminium <i style="color: #ff4848;">Math</i></h1>
                 <div id="contentContainer">
                     <form id="questionForm">
                         <div class="form-group">
@@ -134,16 +134,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="script.js"></script>
     <script>
         $(document).ready(function () {
             var examples = [
-                "What is the capital of France?",
-                "How do I create a new folder in Windows?",
-                "Can you explain the concept of object-oriented programming?",
-                "What are the benefits of regular exercise?",
-                "What is the formula for calculating the area of a circle?",
-                "Can you create a basic python program that prints the current time?",
-                "What is the official Meower website?"
+                "What is the sum of 2 and 3?",
+                "Simplify the expression (2x + 3y) - (4x - 2y)",
+                "Find the value of x in the equation 2x + 5 = 13",
+                "Calculate the area of a rectangle with length 8 and width 5",
+                "Solve the quadratic equation x^2 + 4x + 4 = 0",
+                "What is the derivative of sin(x) with respect to x?",
+                "Find the value of log(base 2) 8"
             ];
 
             function setRandomPlaceholder() {
@@ -151,14 +152,6 @@
                 var randomExample = examples[randomIndex];
                 $("#questionInput").attr("placeholder", randomExample);
             }
-
-            $(document).ready(function () {
-                // No fade effects, just normal link behavior
-                $("#topBar a").click(function (e) {
-                    // Allow the default link behavior
-                    return true;
-                });
-            });
 
             setRandomPlaceholder();
 
@@ -175,7 +168,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "https://geminium.joshatticus.online/api/geminium/ask",
+                    url: "https://geminium.joshatticus.online/api/geminium/math",
                     contentType: "application/json",
                     data: JSON.stringify(requestData),
                     success: function (response) {
